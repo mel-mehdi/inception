@@ -1,0 +1,20 @@
+[mysqld]
+user = mysql
+port = 3306
+bind-address = 0.0.0.0
+datadir = /var/lib/mysql
+socket = /var/run/mysqld/mysqld.sock
+pid-file = /var/run/mysqld/mysqld.pid
+log-error = /var/log/mysql/error.log
+symbolic-links = 0
+sql_mode = ""
+innodb_buffer_pool_size = 128M
+key_buffer_size = 32M
+max_allowed_packet = 16M
+thread_stack = 192K
+thread_cache_size = 8
+myisam_recover_options = BACKUP
+query_cache_limit = 1M
+query_cache_size = 16M
+expire_logs_days = 10
+max_binlog_size = 100M
