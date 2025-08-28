@@ -7,6 +7,7 @@ build:
 	@echo "Creating data directory..."
 	@mkdir -p $(DATA_DIR)/wordpress
 	@mkdir -p $(DATA_DIR)/mariadb
+	@mkdir -p $(DATA_DIR)/redis
 	@echo "Building and starting containers..."
 	@cd srcs && docker compose up -d --build
 
