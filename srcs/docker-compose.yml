@@ -6,17 +6,14 @@ services:
       dockerfile: Dockerfile
     image: mariadb:inception
     environment:
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
       - inception_network
-    secrets:
-      - db_root_password
-      - db_password
     restart: unless-stopped
     expose:
       - "3306"
@@ -31,7 +28,7 @@ services:
       - WORDPRESS_DB_HOST=mariadb
       - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
       - WORDPRESS_DB_USER=${MYSQL_USER}
-      - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/db_password
+      - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
       - WP_ADMIN_USER=${WP_ADMIN_USER}
       - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
       - WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
@@ -45,8 +42,6 @@ services:
       - wordpress_data:/var/www/html
     networks:
       - inception_network
-    secrets:
-      - db_password
     restart: unless-stopped
     depends_on:
       - mariadb
@@ -173,9 +168,3 @@ volumes:
 networks:
   inception_network:
     driver: bridge
-
-secrets:
-  db_root_password:
-    file: ../secrets/db_root_password.txt
-  db_password:
-    file: ../secrets/db_password.txt

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Get database password from secrets first
-DB_PASSWORD=$(cat $WORDPRESS_DB_PASSWORD_FILE)
+# Get database password from environment variable
+DB_PASSWORD="$WORDPRESS_DB_PASSWORD"
 
 # Wait for MariaDB to be ready
 while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" -u"$WORDPRESS_DB_USER" -p"$DB_PASSWORD" --silent; do
@@ -10,7 +10,6 @@ while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" -u"$WORDPRESS_DB_USER" -p"$DB_PAS
 done
 
 echo "MariaDB is ready!"
-DB_PASSWORD=$(cat $WORDPRESS_DB_PASSWORD_FILE)
 
 # Change to WordPress directory
 cd /var/www/html

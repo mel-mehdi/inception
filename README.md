@@ -90,7 +90,7 @@ All services run in isolated Docker containers and communicate through a custom 
   - AOF and RDB persistence
 
 #### 5. FTP Server
-- **Ports**: 21, 21000-21010
+- **Ports**: 21, 21000-21010make
 - **Purpose**: File transfer access to WordPress files
 - **Features**:
   - VSFTPD server
@@ -206,6 +206,8 @@ make fclean   # Complete cleanup including data
 **FTP**:
 - Username: `ftp_user`
 - Password: `ftppassword123`
+- Server: `localhost:21`
+- Access: `ftp://localhost:21`
 
 ## ⚙️ Configuration
 
@@ -255,6 +257,14 @@ Data is persisted in `/home/melmehdi/data/`:
 5. **Redis Connection Issues**:
    - Verify Redis container is running
    - Check Redis password configuration
+
+6. **FTP/WordPress File Upload Issues**:
+   ```bash
+   # If you get "Unable to locate WordPress content directory" error
+   docker exec wordpress bash -c "cd /var/www/html && wp config set FS_METHOD direct --allow-root"
+   docker exec wordpress chown -R www-data:www-data /var/www/html
+   docker restart wordpress
+   ```
 
 ### Useful Commands
 
