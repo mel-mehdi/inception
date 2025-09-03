@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفرق بين Container و Image</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2196F3;
+            margin-bottom: 50px;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .main-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .image-side, .container-side {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-side {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+        }
+        
+        .container-side {
+            background: linear-gradient(45deg, #48c6ef, #6f86d6);
+            color: white;
+        }
+        
+        .icon-large {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .description {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .visual-example {
+            background: rgba(255,255,255,0.2);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .analogy-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .analogy-title {
+            color: #2196F3;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+        }
+        
+        .analogy-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .analogy-item {
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .book {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+        }
+        
+        .dish {
+            background: linear-gradient(45deg, #81ecec, #74b9ff);
+        }
+        
+        .arrow-big {
+            font-size: 3em;
+            color: #2196F3;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .process-flow {
+            background: #263238;
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+        
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .flow-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            position: relative;
+        }
+        
+        .step1 { background: #ff6b6b; }
+        .step2 { background: #4ecdc4; }
+        .step3 { background: #45b7d1; }
+        
+        .step-title {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        
+        .multiple-containers {
+            background: #e8f5e8;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .containers-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .single-image {
+            background: #2196F3;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.3);
+        }
+        
+        .arrow-split {
+            font-size: 2em;
+            color: #4CAF50;
+        }
+        
+        .running-container {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            position: relative;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); }
+            to { box-shadow: 0 10px 30px rgba(76, 175, 80, 0.7); }
+        }
+        
+        .status-indicator {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            background: #00E676;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        .key-differences {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+        
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .diff-item {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .practical-example {
+            background: #fff3e0;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+            border: 3px solid #ff9800;
+        }
+        
+        @media (max-width: 768px) {
+            .main-comparison, .analogy-comparison, .diff-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-steps {
+                flex-direction: column;
+            }
+            
+            .containers-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐳 الفرق بين Container و Image</h1>
+        
+        <!-- المقارنة الأساسية -->
+        <div class="main-comparison">
+            <div class="image-side">
+                <div class="icon-large">📦</div>
+                <div class="title">Docker Image</div>
+                <div class="description">الصورة = القالب الثابت</div>
+                
+                <div class="visual-example">
+                    <h3>📋 خصائص الصورة</h3>
+                    <div style="margin: 15px 0;">
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">🔒 للقراءة فقط</div>
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">💾 مخزنة على القرص</div>
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">🏗️ أساس بناء الحاويات</div>
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">🌐 قابلة للمشاركة</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container-side">
+                <div class="icon-large">🏃</div>
+                <div class="title">Docker Container</div>
+                <div class="description">الحاوية = التطبيق يعمل فعلياً</div>
+                
+                <div class="visual-example">
+                    <h3>⚡ خصائص الحاوية</h3>
+                    <div style="margin: 15px 0;">
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">🔄 قيد التشغيل</div>
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">💭 تستهلك ذاكرة</div>
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">✏️ قابلة للتعديل</div>
+                        <div style="background: rgba(255,255,255,0.3); padding: 10px; border-radius: 8px; margin: 8px 0;">⏰ لها دورة حياة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- التشبيه بكتاب الطبخ -->
+        <div class="analogy-section">
+            <h2 class="analogy-title">🍳 تشبيه كتاب الطبخ</h2>
+            
+            <div class="analogy-comparison">
+                <div class="analogy-item book">
+                    <div style="font-size: 60px; margin-bottom: 20px;">📚</div>
+                    <h3>كتاب الطبخ</h3>
+                    <p><strong>= Docker Image</strong></p>
+                    <div style="margin-top: 20px;">
+                        <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 8px; margin: 8px 0;">📖 وصفات مكتوبة</div>
+                        <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 8px; margin: 8px 0;">🔒 لا تتغير</div>
+                        <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 8px; margin: 8px 0;">📤 يمكن مشاركتها</div>
+                    </div>
+                </div>
+                
+                <div class="arrow-big">➡️</div>
+                
+                <div class="analogy-item dish">
+                    <div style="font-size: 60px; margin-bottom: 20px;">🍝</div>
+                    <h3>الطبق المطبوخ</h3>
+                    <p><strong>= Docker Container</strong></p>
+                    <div style="margin-top: 20px;">
+                        <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 8px; margin: 8px 0;">🔥 نتيجة تطبيق الوصفة</div>
+                        <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 8px; margin: 8px 0;">🍴 قابل للاستهلاك</div>
+                        <div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 8px; margin: 8px 0;">🔄 يمكن تكراره</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- العملية خطوة بخطوة -->
+        <div class="process-flow">
+            <h2 style="color: #4CAF50; text-align: center; margin-bottom: 40px; font-size: 2.2em;">⚙️ من الصورة إلى الحاوية</h2>
+            
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-circle step1">📦</div>
+                    <div class="step-title">لديك صورة</div>
+                    <p>قالب ثابت جاهز للاستخدام</p>
+                    <div style="background: #ff6b6b; color: white; padding: 10px; border-radius: 8px; margin-top: 15px; font-family: monospace;">
+                        nginx:latest
+                    </div>
+                </div>
+                
+                <div style="color: #4CAF50; font-size: 3em;">🔨</div>
+                
+                <div class="flow-step">
+                    <div class="step-circle step2">⚡</div>
+                    <div class="step-title">تشغل أمر</div>
+                    <p>تحول الصورة إلى حاوية</p>
+                    <div style="background: #4ecdc4; color: white; padding: 10px; border-radius: 8px; margin-top: 15px; font-family: monospace; direction: ltr;">
+                        docker run nginx
+                    </div>
+                </div>
+                
+                <div style="color: #4CAF50; font-size: 3em;">✨</div>
+                
+                <div class="flow-step">
+                    <div class="step-circle step3">🏃</div>
+                    <div class="step-title">حاوية تعمل</div>
+                    <p>التطبيق أصبح نشطاً</p>
+                    <div style="background: #45b7d1; color: white; padding: 10px; border-radius: 8px; margin-top: 15px;">
+                        🌐 موقع ويب يعمل
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- حاوية واحدة، عدة حاويات -->
+        <div class="multiple-containers">
+            <h2 style="color: #2E7D32; margin-bottom: 30px; font-size: 2.2em;">🔢 صورة واحدة ← عدة حاويات</h2>
+            
+            <div class="containers-grid">
+                <div class="single-image">
+                    <div style="font-size: 40px; margin-bottom: 15px;">📦</div>
+                    <div style="font-size: 1.3em;">صورة واحدة</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">nginx:latest</div>
+                </div>
+                
+                <div class="arrow-split">📤</div>
+                
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div class="running-container">
+                        <div class="status-indicator"></div>
+                        <div style="font-size: 20px;">🌐</div>
+                        حاوية 1: موقع شركة
+                    </div>
+                    
+                    <div class="running-container" style="animation-delay: 0.5s;">
+                        <div class="status-indicator"></div>
+                        <div style="font-size: 20px;">🛒</div>
+                        حاوية 2: متجر إلكتروني
+                    </div>
+                    
+                    <div class="running-container" style="animation-delay: 1s;">
+                        <div class="status-indicator"></div>
+                        <div style="font-size: 20px;">📱</div>
+                        حاوية 3: تطبيق API
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #c8e6c9; border-radius: 10px;">
+                <strong>✨ المعنى:</strong> من صورة واحدة يمكن إنشاء حاويات متعددة تعمل بشكل منفصل!
+            </div>
+        </div>
+        
+        <!-- الفروق الرئيسية -->
+        <div class="key-differences">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.2em;">🔍 الفروق الرئيسية</h2>
+            
+            <div class="diff-grid">
+                <div class="diff-item">
+                    <div style="font-size: 40px; margin-bottom: 15px;">📦</div>
+                    <h3>Docker Image</h3>
+                    <ul style="text-align: right; list-style: none; padding: 0;">
+                        <li>🔒 ثابتة وغير قابلة للتغيير</li>
+                        <li>💾 مخزنة على القرص الصلب</li>
+                        <li>📋 تحتوي على التعليمات فقط</li>
+                        <li>⚡ لا تستهلك معالج أو ذاكرة</li>
+                        <li>🏗️ أساس لإنشاء الحاويات</li>
+                    </ul>
+                </div>
+                
+                <div class="diff-item">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🏃</div>
+                    <h3>Docker Container</h3>
+                    <ul style="text-align: right; list-style: none; padding: 0;">
+                        <li>🔄 نشطة ومتغيرة</li>
+                        <li>💭 تستخدم الذاكرة والمعالج</li>
+                        <li>🎯 التطبيق يعمل فعلياً</li>
+                        <li>⏱️ لها دورة حياة (بداية ونهاية)</li>
+                        <li>✏️ يمكن التفاعل معها وتعديلها</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- مثال عملي -->
+        <div class="practical-example">
+            <h2 style="color: #E65100; text-align: center; margin-bottom: 30px;">💡 مثال عملي: تطبيق ويب</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: center;">
+                <div style="text-align: center;">
+                    <div style="background: #ff9800; color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                        <div style="font-size: 50px; margin-bottom: 15px;">📋</div>
+                        <h3>الصورة</h3>
+                        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <div>🐧 Ubuntu Linux</div>
+                            <div>🔧 Node.js</div>
+                            <div>📁 كود التطبيق</div>
+                            <div>🔌 المكتبات</div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9em;">حجم: 200MB على القرص</p>
+                    </div>
+                </div>
+                
+                <div style="font-size: 4em; color: #4CAF50;">
+                    ▶️
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="background: #4CAF50; color: white; padding: 25px; border-radius: 15px; position: relative;">
+                        <div class="status-indicator"></div>
+                        <div style="font-size: 50px; margin-bottom: 15px;">🌐</div>
+                        <h3>الحاوية</h3>
+                        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <div>🔄 التطبيق يعمل</div>
+                            <div>🌐 Port: 3000</div>
+                            <div>💭 يستخدم 50MB ذاكرة</div>
+                            <div>🔧 يمكن التحكم به</div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9em;">الحالة: 🟢 نشط</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding: 25px; background: #e3f2fd; border-radius: 15px;">
+                <h3 style="color: #1976D2; margin-bottom: 20px;">🎯 الخلاصة المصورة</h3>
+                <div style="font-size: 1.5em; color: #333;">
+                    <strong>الصورة</strong> 📦 = كتاب الوصفات<br>
+                    <strong>الحاوية</strong> 🏃 = الطبق الذي طبخته من الوصفة
+                </div>
+            </div>
+        </div>
+        
+        <!-- أمثلة الأوامر -->
+        <div style="background: #263238; color: white; padding: 30px; border-radius: 20px; margin: 40px 0;">
+            <h2 style="color: #4CAF50; text-align: center; margin-bottom: 30px;">💻 أوامر عملية</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div>
+                    <h3 style="color: #ff6b6b; margin-bottom: 15px;">📦 التعامل مع الصور</h3>
+                    <div style="background: #37474f; padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; direction: ltr; text-align: left;">
+<span style="color: #4CAF50;"># سحب صورة</span>
+docker pull nginx
+
+<span style="color: #4CAF50;"># عرض الصور</span>
+docker images
+
+<span style="color: #4CAF50;"># بناء صورة</span>
+docker build -t myapp .
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="color: #4ecdc4; margin-bottom: 15px;">🏃 التعامل مع الحاويات</h3>
+                    <div style="background: #37474f; padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; direction: ltr; text-align: left;">
+<span style="color: #4CAF50;"># تشغيل حاوية</span>
+docker run -d nginx
+
+<span style="color: #4CAF50;"># عرض الحاويات النشطة</span>
+docker ps
+
+<span style="color: #4CAF50;"># إيقاف حاوية</span>
+docker stop container_id
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- النتيجة النهائية -->
+        <div style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 40px; border-radius: 20px; text-align: center;">
+            <h2 style="color: white; border: none; margin-bottom: 30px; font-size: 2.5em;">🎉 اتذكر</h2>
+            <div style="font-size: 1.8em; line-height: 1.8;">
+                <div style="margin: 20px 0;">📦 <strong>الصورة</strong> = الخطة أو القالب</div>
+                <div style="margin: 20px 0;">🏃 <strong>الحاوية</strong> = التطبيق يعمل من الخطة</div>
+                <div style="margin: 20px 0;">💡 صورة واحدة ← عدة حاويات</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

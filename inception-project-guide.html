@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inception Project Architecture Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2196F3;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        
+        .architecture {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .service {
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .nginx {
+            background: linear-gradient(45deg, #28a745, #20c997);
+        }
+        
+        .wordpress {
+            background: linear-gradient(45deg, #007bff, #6f42c1);
+        }
+        
+        .mariadb {
+            background: linear-gradient(45deg, #fd7e14, #e83e8c);
+        }
+        
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .service-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .port {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        
+        .network-diagram {
+            background: #e3f2fd;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .network-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .flow-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #2196F3;
+        }
+        
+        .requirements {
+            background: #fff3e0;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .req-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .req-item {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .file-structure {
+            background: #263238;
+            color: #4CAF50;
+            padding: 30px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            margin: 30px 0;
+        }
+        
+        .volumes {
+            background: #e8f5e8;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .volume-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .checklist {
+            background: #f3e5f5;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .check-icon {
+            margin-left: 15px;
+            font-size: 1.2em;
+            color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .req-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .network-flow {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏗️ Inception Project Architecture Guide</h1>
+        
+        <div class="architecture">
+            <h2 style="color: #1976D2; margin-bottom: 30px;">📐 Project Architecture Overview</h2>
+            
+            <div class="services-container">
+                <div class="service nginx">
+                    <span class="service-icon">🌐</span>
+                    <div class="service-title">NGINX</div>
+                    <div class="port">Port: 443 (HTTPS only)</div>
+                    <div style="font-size: 0.9em; margin-top: 10px;">
+                        • SSL/TLS Certificate<br>
+                        • Reverse Proxy<br>
+                        • Static Files
+                    </div>
+                </div>
+                
+                <div class="service wordpress">
+                    <span class="service-icon">📝</span>
+                    <div class="service-title">WordPress + PHP-FPM</div>
+                    <div class="port">Port: 9000 (internal)</div>
+                    <div style="font-size: 0.9em; margin-top: 10px;">
+                        • CMS System<br>
+                        • PHP Processing<br>
+                        • User Interface
+                    </div>
+                </div>
+                
+                <div class="service mariadb">
+                    <span class="service-icon">🗄️</span>
+                    <div class="service-title">MariaDB</div>
+                    <div class="port">Port: 3306 (internal)</div>
+                    <div style="font-size: 0.9em; margin-top: 10px;">
+                        • Database Server<br>
+                        • Data Persistence<br>
+                        • WordPress Backend
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="network-diagram">
+            <h2 style="color: #1976D2; text-align: center; margin-bottom: 30px;">🔗 Network Flow</h2>
+            
+            <div class="network-flow">
+                <div class="flow-item">
+                    <div style="font-size: 2em; margin-bottom: 10px;">👤</div>
+                    <strong>User</strong><br>
+                    Browser Request
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="flow-item" style="background: #28a745; color: white;">
+                    <div style="font-size: 2em; margin-bottom: 10px;">🌐</div>
+                    <strong>NGINX</strong><br>
+                    Port 443 (HTTPS)
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="flow-item" style="background: #007bff; color: white;">
+                    <div style="font-size: 2em; margin-bottom: 10px;">📝</div>
+                    <strong>WordPress</strong><br>
+                    PHP Processing
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="flow-item" style="background: #fd7e14; color: white;">
+                    <div style="font-size: 2em; margin-bottom: 10px;">🗄️</div>
+                    <strong>MariaDB</strong><br>
+                    Database Query
+                </div>
+            </div>
+        </div>
+        
+        <div class="requirements">
+            <h2 style="color: #E65100; margin-bottom: 30px;">📋 Key Requirements</h2>
+            
+            <div class="req-grid">
+                <div class="req-item">
+                    <h3>🐳 Docker Requirements</h3>
+                    <ul>
+                        <li>Custom Dockerfiles (no pre-built images)</li>
+                        <li>Alpine or Debian base images</li>
+                        <li>No ready-made containers from DockerHub</li>
+                        <li>Each service in separate container</li>
+                    </ul>
+                </div>
+                
+                <div class="req-item">
+                    <h3>🔐 Security Requirements</h3>
+                    <ul>
+                        <li>HTTPS only (port 443)</li>
+                        <li>SSL/TLS certificate</li>
+                        <li>Environment variables in .env</li>
+                        <li>No credentials in repository</li>
+                    </ul>
+                </div>
+                
+                <div class="req-item">
+                    <h3>🗂️ Structure Requirements</h3>
+                    <ul>
+                        <li>srcs/ folder at repository root</li>
+                        <li>Makefile at repository root</li>
+                        <li>docker-compose.yml in srcs/</li>
+                        <li>Dockerfiles in respective directories</li>
+                    </ul>
+                </div>
+                
+                <div class="req-item">
+                    <h3>💾 Persistence Requirements</h3>
+                    <ul>
+                        <li>Docker volumes for data</li>
+                        <li>WordPress files volume</li>
+                        <li>Database data volume</li>
+                        <li>Data survives container restart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="file-structure">
+            <h2 style="color: #4CAF50; margin-bottom: 20px;">📁 Required Directory Structure</h2>
+            <pre>
+inception/
+├── Makefile
+└── srcs/
+    ├── docker-compose.yml
+    ├── .env
+    └── requirements/
+        ├── nginx/
+        │   ├── Dockerfile
+        │   ├── conf/
+        │   └── tools/
+        ├── wordpress/
+        │   ├── Dockerfile
+        │   ├── conf/
+        │   └── tools/
+        └── mariadb/
+            ├── Dockerfile
+            ├── conf/
+            └── tools/
+            </pre>
+        </div>
+        
+        <div class="volumes">
+            <h2 style="color: #2E7D32; margin-bottom: 30px;">💾 Volume Configuration</h2>
+            
+            <div class="volume-item">
+                <span style="font-size: 2em; margin-left: 15px;">📁</span>
+                <div>
+                    <strong>WordPress Volume</strong><br>
+                    <code>/home/[login]/data/wordpress</code> → <code>/var/www/html</code>
+                </div>
+            </div>
+            
+            <div class="volume-item">
+                <span style="font-size: 2em; margin-left: 15px;">🗄️</span>
+                <div>
+                    <strong>MariaDB Volume</strong><br>
+                    <code>/home/[login]/data/mariadb</code> → <code>/var/lib/mysql</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="checklist">
+            <h2 style="color: #6A1B9A; margin-bottom: 30px;">✅ Evaluation Checklist</h2>
+            
+            <div class="check-item">
+                <span class="check-icon">🔍</span>
+                <div>Custom Dockerfiles for each service (no DockerHub images)</div>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">🔒</span>
+                <div>NGINX accessible only via HTTPS (port 443)</div>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">🌐</span>
+                <div>Website accessible at https://[login].42.fr</div>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">📝</span>
+                <div>WordPress properly configured (no installation page)</div>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">🗄️</span>
+                <div>MariaDB database populated and accessible</div>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">💾</span>
+                <div>Data persists after system reboot</div>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">🔗</span>
+                <div>Docker network configured (no host network or links)</div>
+            </div>
+            
+            <div class="check-item">
+                <span class="check-icon">🚫</span>
+                <div>No infinite loops or background processes in Dockerfiles</div>
+            </div>
+        </div>
+        
+        <div style="background: linear-gradient(45deg, #ff6b6b, #feca57); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-top: 40px;">
+            <h2 style="color: white; margin-bottom: 20px;">🎯 Learning Objectives</h2>
+            <div style="font-size: 1.2em;">
+                <p>• Understand Docker containerization concepts</p>
+                <p>• Learn docker-compose for multi-service applications</p>
+                <p>• Implement secure web server configuration</p>
+                <p>• Practice infrastructure as code principles</p>
+            </div>
+        </div>
+        
+        <div style="background: #263238; color: white; padding: 30px; border-radius: 15px; margin-top: 30px;">
+            <h2 style="color: #4CAF50; margin-bottom: 20px;">💡 Study Resources</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin: 10px 0;">📚 Docker Documentation: Official Docker docs</li>
+                <li style="margin: 10px 0;">🔧 Docker Compose Guide: Multi-container applications</li>
+                <li style="margin: 10px 0;">🌐 NGINX Configuration: SSL/TLS setup</li>
+                <li style="margin: 10px 0;">📝 WordPress with Docker: PHP-FPM configuration</li>
+                <li style="margin: 10px 0;">🗄️ MariaDB Setup: Database initialization</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
