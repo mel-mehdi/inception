@@ -219,6 +219,8 @@ MYSQL_DATABASE=your_db_name
 WP_ADMIN_USER=your_admin
 # ... other variables
 ```
+ftp localhost 21
+# Then enter: ftp_user / ftppassword123
 
 ### Secrets Management
 Passwords are stored in `secrets/` directory:
@@ -309,10 +311,6 @@ docker exec -it redis redis-cli ping
 ```
 inc/
 ├── Makefile                 # Build automation
-├── secrets/                 # Sensitive data
-│   ├── credentials.txt
-│   ├── db_password.txt
-│   └── db_root_password.txt
 └── srcs/
     ├── .env                 # Environment variables
     ├── docker-compose.yml   # Container orchestration
