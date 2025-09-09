@@ -19,47 +19,27 @@
   <h2>⚡ Quick Start Animation</h2>
   
   <details>
-    <summary>🎬 Click to see the magic happen!</summary>
+    <summary>🎬 Click to see the setup steps!</summary>
     
 <div align="center">
   <div style="font-family: 'Courier New', monospace; background: #1e1e1e; color: #00ff00; padding: 20px; border-radius: 10px; margin: 10px 0;">
-    <div style="animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;"># Building your infrastructure...</div>
+    <div># Building your infrastructure...</div>
   </div>
   <img src="https://media.giphy.com/media/3o7TKz9bX9Z8LxOq5i/giphy.gif" alt="Building Animation" width="300"/>
 </div>
 
 <div align="center">
   <div style="font-family: 'Courier New', monospace; background: #1e1e1e; color: #00ff00; padding: 20px; border-radius: 10px; margin: 10px 0;">
-    <div style="animation: typing 3s steps(25, end) 3s, blink-caret 0.75s step-end infinite 3s;"># Starting services...</div>
+    <div># Starting services...</div>
   </div>
   <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Starting Services" width="300"/>
 </div>
 
 <div align="center">
   <div style="font-family: 'Courier New', monospace; background: #1e1e1e; color: #00ff00; padding: 20px; border-radius: 10px; margin: 10px 0;">
-    <div style="animation: typing 4s steps(35, end) 6s, blink-caret 0.75s step-end infinite 6s;"># Your site is live! Visit: https://melmehdi.42.fr</div>
+    <div># Your site is live! Visit: https://melmehdi.42.fr</div>
   </div>
 </div>
-
-<style>
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: #00ff00; }
-}
-
-div[style*="typing"] {
-  overflow: hidden;
-  border-right: 3px solid #00ff00;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: 0.15em;
-}
-</style>
 
   </details>
 </div>
@@ -118,17 +98,10 @@ graph TD
 ```
 
 <div align="center" style="margin-top: 20px;">
-  <div style="display: inline-block; background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 15px 25px; border-radius: 25px; animation: pulse 2s infinite;">
+  <div style="display: inline-block; background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 15px 25px; border-radius: 25px;">
     <span style="font-size: 1.2em; font-weight: bold;">🔄 Network Active</span>
   </div>
 </div>
-
-<style>
-@keyframes pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
-  50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
-}
-</style>
 
   </details>
 </div>
@@ -163,72 +136,39 @@ graph TD
 
 ## 🚀 Services
 
-<div align="center">
-  <h3 style="animation: fadeInUp 1s ease-out;">🎯 Service Status Dashboard</h3>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
-    
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; text-align: center; animation: slideInLeft 1s ease-out;">
-      <div style="font-size: 3em; margin-bottom: 10px;">🌐</div>
-      <h4>NGINX</h4>
-      <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; margin: 10px 0;">
-        <div style="animation: countUp 2s ease-out forwards;">0</div>
-        <small>Port 443 Active</small>
-      </div>
-      <div style="animation: bounceIn 1s ease-out 0.5s both;">🟢 Online</div>
-    </div>
-    
-    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 15px; text-align: center; animation: slideInRight 1s ease-out;">
-      <div style="font-size: 3em; margin-bottom: 10px;">📝</div>
-      <h4>WordPress</h4>
-      <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; margin: 10px 0;">
-        <div style="animation: countUp 2s ease-out forwards;">0</div>
-        <small>Port 9000 Active</small>
-      </div>
-      <div style="animation: bounceIn 1s ease-out 0.5s both;">🟢 Online</div>
-    </div>
-    
-    <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 20px; border-radius: 15px; text-align: center; animation: slideInLeft 1s ease-out 0.3s both;">
-      <div style="font-size: 3em; margin-bottom: 10px;">🗄️</div>
-      <h4>MariaDB</h4>
-      <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; margin: 10px 0;">
-        <div style="animation: countUp 2s ease-out forwards;">0</div>
-        <small>Port 3306 Active</small>
-      </div>
-      <div style="animation: bounceIn 1s ease-out 0.5s both;">🟢 Online</div>
-    </div>
-    
-  </div>
-  
-  <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes bounceIn {
-    0% { opacity: 0; transform: scale(0.3); }
-    50% { opacity: 1; transform: scale(1.05); }
-    70% { transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-  
-  @keyframes countUp {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  </style>
-</div>
+### Core Services
+
+#### 1. NGINX
+- **Port**: 443 (HTTPS)
+- **Purpose**: Reverse proxy and web server
+- **Features**:
+  - SSL/TLS encryption
+  - Static file serving
+  - Load balancing
+  - Security headers
+
+#### 2. WordPress + PHP-FPM
+- **Port**: 9000 (internal)
+- **Purpose**: Content Management System
+- **Features**:
+  - PHP processing
+  - MySQL database connection
+  - User authentication
+  - Content management
+
+#### 3. MariaDB
+- **Port**: 3306 (internal)
+- **Purpose**: Database server
+- **Features**:
+  - MySQL compatible
+  - Data persistence
+  - User management
+  - Secure connections
+
+### Service Status Overview
+- 🟢 **NGINX**: Active on port 443
+- 🟢 **WordPress**: Active on port 9000
+- 🟢 **MariaDB**: Active on port 3306
 
 ### Bonus Services
 
@@ -280,90 +220,45 @@ graph TD
 
 ## 📥 Installation
 
-<div align="center">
-  <h3>🚀 Installation Progress</h3>
-  
-  <details>
-    <summary>📋 Click to see installation steps with animations!</summary>
-    
-<div align="center">
-  <div style="width: 100%; max-width: 600px; margin: 20px 0;">
-    <div style="background: #f0f0f0; border-radius: 20px; padding: 3px;">
-      <div style="height: 20px; background: linear-gradient(90deg, #4CAF50, #45b7d1); border-radius: 17px; width: 0%; animation: progressBar 3s ease-out forwards;"></div>
-    </div>
-    <div style="margin-top: 10px; font-weight: bold; animation: fadeIn 1s ease-out;">Step 1: Clone Repository</div>
-  </div>
-  
-  <div style="font-family: 'Courier New', monospace; background: #2d3748; color: #68d391; padding: 15px; border-radius: 10px; margin: 10px 0; animation: slideInUp 1s ease-out;">
-    <div style="animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;">git clone &lt;repository-url&gt; &amp;&amp; cd inception</div>
-  </div>
-  
-  <img src="https://media.giphy.com/media/3o7TKz9bX9Z8LxOq5i/giphy.gif" alt="Installation" width="300"/>
-</div>
+### Quick Setup Steps
 
-<div align="center">
-  <div style="width: 100%; max-width: 600px; margin: 20px 0;">
-    <div style="background: #f0f0f0; border-radius: 20px; padding: 3px;">
-      <div style="height: 20px; background: linear-gradient(90deg, #2196F3, #21CBF3); border-radius: 17px; width: 0%; animation: progressBar 3s ease-out 3s forwards;"></div>
-    </div>
-    <div style="margin-top: 10px; font-weight: bold; animation: fadeIn 1s ease-out 3s both;">Step 2: Setup Environment</div>
-  </div>
-  
-  <div style="font-family: 'Courier New', monospace; background: #2d3748; color: #68d391; padding: 15px; border-radius: 10px; margin: 10px 0; animation: slideInUp 1s ease-out 3s both;">
-    <div style="animation: typing 2s steps(35, end) 3s, blink-caret 0.75s step-end infinite 3s;"># Environment configured successfully</div>
-  </div>
-</div>
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url> && cd inception
+   ```
 
-<div align="center">
-  <div style="width: 100%; max-width: 600px; margin: 20px 0;">
-    <div style="background: #f0f0f0; border-radius: 20px; padding: 3px;">
-      <div style="height: 20px; background: linear-gradient(90deg, #FF9800, #FFC107); border-radius: 17px; width: 0%; animation: progressBar 3s ease-out 6s forwards;"></div>
-    </div>
-    <div style="margin-top: 10px; font-weight: bold; animation: fadeIn 1s ease-out 6s both;">Step 3: Create Directories</div>
-  </div>
-  
-  <div style="font-family: 'Courier New', monospace; background: #2d3748; color: #68d391; padding: 15px; border-radius: 10px; margin: 10px 0; animation: slideInUp 1s ease-out 6s both;">
-    <div style="animation: typing 2s steps(25, end) 6s, blink-caret 0.75s step-end infinite 6s;">make</div>
-  </div>
-</div>
+2. **Setup environment**
+   ```bash
+   # Copy environment template
+   cp srcs/.env.example srcs/.env
+   # Edit .env with your configuration
+   ```
 
-<div align="center">
-  <div style="width: 100%; max-width: 600px; margin: 20px 0;">
-    <div style="background: #f0f0f0; border-radius: 20px; padding: 3px;">
-      <div style="height: 20px; background: linear-gradient(90deg, #4CAF50, #66BB6A); border-radius: 17px; width: 0%; animation: progressBar 3s ease-out 9s forwards;"></div>
-    </div>
-    <div style="margin-top: 10px; font-weight: bold; animation: fadeIn 1s ease-out 9s both;">Step 4: Build & Start</div>
-  </div>
-  
-  <div style="font-family: 'Courier New', monospace; background: #2d3748; color: #68d391; padding: 15px; border-radius: 10px; margin: 10px 0; animation: slideInUp 1s ease-out 9s both;">
-    <div style="animation: typing 2s steps(20, end) 9s, blink-caret 0.75s step-end infinite 9s;">make</div>
-  </div>
-  
-  <div style="animation: zoomIn 1s ease-out 12s both;">
-    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Success!" width="200"/>
-    <h3>🎉 Your infrastructure is ready!</h3>
-  </div>
-</div>
+3. **Create required directories**
+   ```bash
+   make
+   ```
 
-<style>
-@keyframes progressBar {
-  from { width: 0%; }
-  to { width: 100%; }
-}
+4. **Build and start services**
+   ```bash
+   make
+   ```
 
-@keyframes slideInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+### Alternative Commands
 
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.5); }
-  to { opacity: 1; transform: scale(1); }
-}
-</style>
+```bash
+# Build images only
+make build
 
-  </details>
-</div>
+# Start containers only
+make up
+
+# View logs
+make logs
+
+# Stop services
+make down
+```
 
 ## 🚀 Usage
 
@@ -578,9 +473,9 @@ This project demonstrates:
 </div>
 
 <div align="center" style="margin: 30px 0;">
-  <div style="display: inline-block; animation: float 3s ease-in-out infinite;">
+  <div style="display: inline-block;">
     <div style="background: linear-gradient(45deg, #FF6B6B, #4ECDC4); color: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-      <h3 style="margin: 0; animation: textGlow 2s ease-in-out infinite alternate;">🐳 Docker World</h3>
+      <h3 style="margin: 0;">🐳 Docker World</h3>
     </div>
   </div>
 </div>
@@ -591,73 +486,36 @@ This project demonstrates:
 ## المقارنة الأساسية
 
 <div align="center">
-  <table style="border-collapse: collapse; animation: tableFadeIn 2s ease-out;">
+  <table style="border-collapse: collapse;">
     <tr>
-      <td align="center" style="padding: 20px; animation: slideInFromLeft 1s ease-out;">
-        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); animation: cardHover 3s ease-in-out infinite;">
+      <td align="center" style="padding: 20px;">
+        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
           <h3>📦 Docker Image</h3>
           <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Image Animation" width="150"/>
           <p><strong>الصورة = القالب الثابت</strong></p>
           <ul align="right" style="list-style: none; padding: 0;">
-            <li style="animation: listItemFade 1s ease-out 0.5s both;">🔒 للقراءة فقط</li>
-            <li style="animation: listItemFade 1s ease-out 0.7s both;">💾 مخزنة على القرص</li>
-            <li style="animation: listItemFade 1s ease-out 0.9s both;">🏗️ أساس بناء الحاويات</li>
-            <li style="animation: listItemFade 1s ease-out 1.1s both;">🌐 قابلة للمشاركة</li>
+            <li>🔒 للقراءة فقط</li>
+            <li>💾 مخزنة على القرص</li>
+            <li>🏗️ أساس بناء الحاويات</li>
+            <li>🌐 قابلة للمشاركة</li>
           </ul>
         </div>
       </td>
-      <td align="center" style="padding: 20px; animation: slideInFromRight 1s ease-out;">
-        <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); animation: cardHover 3s ease-in-out infinite 1s;">
+      <td align="center" style="padding: 20px;">
+        <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
           <h3>🏃 Docker Container</h3>
           <img src="https://media.giphy.com/media/3o7TKz9bX9Z8LxOq5i/giphy.gif" alt="Container Animation" width="150"/>
           <p><strong>الحاوية = التطبيق يعمل فعلياً</strong></p>
           <ul align="right" style="list-style: none; padding: 0;">
-            <li style="animation: listItemFade 1s ease-out 0.5s both;">🔄 قيد التشغيل</li>
-            <li style="animation: listItemFade 1s ease-out 0.7s both;">💭 تستهلك ذاكرة</li>
-            <li style="animation: listItemFade 1s ease-out 0.9s both;">✏️ قابلة للتعديل</li>
-            <li style="animation: listItemFade 1s ease-out 1.1s both;">⏰ لها دورة حياة</li>
+            <li>🔄 قيد التشغيل</li>
+            <li>💭 تستهلك ذاكرة</li>
+            <li>✏️ قابلة للتعديل</li>
+            <li>⏰ لها دورة حياة</li>
           </ul>
         </div>
       </td>
     </tr>
   </table>
-  
-  <style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  @keyframes textGlow {
-    from { text-shadow: 0 0 10px #fff; }
-    to { text-shadow: 0 0 20px #fff, 0 0 30px #fff; }
-  }
-  
-  @keyframes tableFadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  
-  @keyframes slideInFromLeft {
-    from { opacity: 0; transform: translateX(-100px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes slideInFromRight {
-    from { opacity: 0; transform: translateX(100px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes cardHover {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-  }
-  
-  @keyframes listItemFade {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  </style>
 </div>
 
 ## 🍳 تشبيه كتاب الطبخ
@@ -815,51 +673,51 @@ Infrastructure
   <h3>🔄 Docker Workflow Animation</h3>
   
   <details>
-    <summary>🎬 Click to see the workflow in motion!</summary>
+    <summary>🎬 Click to see the workflow steps!</summary>
     
 <div align="center">
   <div style="position: relative; width: 100%; max-width: 800px; margin: 30px 0;">
     <!-- Workflow Steps -->
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
       
-      <div style="text-align: center; animation: stepBounce 2s ease-out;">
+      <div style="text-align: center;">
         <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
           <span style="font-size: 2em;">📝</span>
         </div>
-        <div style="background: #667eea; color: white; padding: 10px 20px; border-radius: 20px; animation: stepText 1s ease-out;">
+        <div style="background: #667eea; color: white; padding: 10px 20px; border-radius: 20px;">
           Dockerfile
         </div>
       </div>
       
-      <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2); animation: lineGrow 2s ease-out 1s both;"></div>
+      <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
       
-      <div style="text-align: center; animation: stepBounce 2s ease-out 1s;">
+      <div style="text-align: center;">
         <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #f093fb, #f5576c); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
           <span style="font-size: 2em;">🏗️</span>
         </div>
-        <div style="background: #f093fb; color: white; padding: 10px 20px; border-radius: 20px; animation: stepText 1s ease-out 1s both;">
+        <div style="background: #f093fb; color: white; padding: 10px 20px; border-radius: 20px;">
           Build Image
         </div>
       </div>
       
-      <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #f093fb, #f5576c); animation: lineGrow 2s ease-out 2s both;"></div>
+      <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #f093fb, #f5576c);"></div>
       
-      <div style="text-align: center; animation: stepBounce 2s ease-out 2s;">
+      <div style="text-align: center;">
         <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #4facfe, #00f2fe); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
           <span style="font-size: 2em;">🚀</span>
         </div>
-        <div style="background: #4facfe; color: white; padding: 10px 20px; border-radius: 20px; animation: stepText 1s ease-out 2s both;">
+        <div style="background: #4facfe; color: white; padding: 10px 20px; border-radius: 20px;">
           Run Container
         </div>
       </div>
       
-      <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #4facfe, #00f2fe); animation: lineGrow 2s ease-out 3s both;"></div>
+      <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #4facfe, #00f2fe);"></div>
       
-      <div style="text-align: center; animation: stepBounce 2s ease-out 3s;">
+      <div style="text-align: center;">
         <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #43e97b, #38f9d7); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
           <span style="font-size: 2em;">☁️</span>
         </div>
-        <div style="background: #43e97b; color: white; padding: 10px 20px; border-radius: 20px; animation: stepText 1s ease-out 3s both;">
+        <div style="background: #43e97b; color: white; padding: 10px 20px; border-radius: 20px;">
           Deploy
         </div>
       </div>
@@ -868,11 +726,11 @@ Infrastructure
     
     <!-- Progress Counter -->
     <div style="text-align: center; margin-top: 30px;">
-      <div style="font-size: 2em; font-weight: bold; color: #667eea; animation: counter 4s ease-out;">
-        <span style="animation: numberCount 4s ease-out;">0</span>%
+      <div style="font-size: 2em; font-weight: bold; color: #667eea;">
+        100%
       </div>
       <div style="width: 100%; height: 10px; background: #f0f0f0; border-radius: 5px; overflow: hidden;">
-        <div style="height: 100%; background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe, #43e97b, #38f9d7); animation: progressFill 4s ease-out;"></div>
+        <div style="height: 100%; background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe, #43e97b, #38f9d7);"></div>
       </div>
     </div>
   </div>
@@ -899,41 +757,6 @@ flowchart TD
   <img src="https://progress-bar.dev/75/?title=Run%20Container" alt="Run: 75%"/>
   <img src="https://progress-bar.dev/100/?title=Deploy&color=brightgreen" alt="Deploy: 100%"/>
 </div>
-
-<style>
-@keyframes stepBounce {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-@keyframes stepText {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes lineGrow {
-  from { width: 0; }
-  to { width: 100px; }
-}
-
-@keyframes counter {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-  @keyframes numberCount {
-    0% { opacity: 0.3; }
-    25% { opacity: 0.5; }
-    50% { opacity: 0.7; }
-    75% { opacity: 0.9; }
-    100% { opacity: 1; }
-  }@keyframes progressFill {
-  0% { width: 0%; }
-  25% { width: 25%; }
-  50% { width: 50%; }
-  75% { width: 75%; }
-  100% { width: 100%; }
 }
 </style>
 
@@ -1189,100 +1012,6 @@ inception/
 
   </details>
 </div>
-
----
-
-**Note**: This is an educational project for learning Docker and infrastructure management. For production use, additional security measures and monitoring should be implemented.
-
----
-
-<div align="center">
-  <h2>🎉 Thank You for Exploring!</h2>
-  
-  <details>
-    <summary>🎬 Click for a final celebration!</summary>
-    
-<div align="center">
-  <div style="position: relative; overflow: hidden; border-radius: 20px; margin: 20px 0;">
-    <div style="background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe); background-size: 400% 400%; animation: gradientShift 3s ease infinite; padding: 40px; color: white; text-align: center;">
-      <h3 style="animation: textBounce 2s ease-in-out infinite; margin: 0;">🚀 You've mastered Docker containerization!</h3>
-    </div>
-  </div>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0;">
-    <div style="background: linear-gradient(135deg, #ff9a9e, #fecfef); padding: 20px; border-radius: 15px; text-align: center; animation: cardFlip 2s ease-out;">
-      <div style="font-size: 3em; animation: emojiBounce 1s ease-in-out infinite;">🎯</div>
-      <h4>Learning Complete</h4>
-      <p>Docker concepts mastered!</p>
-    </div>
-    
-    <div style="background: linear-gradient(135deg, #a8edea, #fed6e3); padding: 20px; border-radius: 15px; text-align: center; animation: cardFlip 2s ease-out 0.5s both;">
-      <div style="font-size: 3em; animation: emojiBounce 1s ease-in-out infinite 0.5s;">🚀</div>
-      <h4>Ready to Deploy</h4>
-      <p>Infrastructure ready!</p>
-    </div>
-    
-    <div style="background: linear-gradient(135deg, #d299c2, #fef9d7); padding: 20px; border-radius: 15px; text-align: center; animation: cardFlip 2s ease-out 1s both;">
-      <div style="font-size: 3em; animation: emojiBounce 1s ease-in-out infinite 1s;">🌟</div>
-      <h4>Future Ready</h4>
-      <p>Build amazing things!</p>
-    </div>
-  </div>
-  
-  <p>
-    <img src="https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge" alt="Made with Love"/>
-    <img src="https://img.shields.io/badge/Powered%20by-Docker-blue?style=for-the-badge&logo=docker" alt="Powered by Docker"/>
-    <img src="https://img.shields.io/badge/Learn-More-green?style=for-the-badge" alt="Learn More"/>
-  </p>
-  
-  <div align="center" style="margin-top: 30px;">
-    <div style="display: inline-block; animation: rocketLaunch 3s ease-in-out infinite;">
-      <img src="https://media.giphy.com/media/3o7TKz9bX9Z8LxOq5i/giphy.gif" alt="Docker Success" width="200"/>
-    </div>
-  </div>
-  
-  <h4 style="animation: fadeInOut 2s ease-in-out infinite;">🌟 Keep building amazing things with Docker! 🌟</h4>
-</div>
-
-  </details>
-</div>
-
-<style>
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes textBounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
-}
-
-@keyframes cardFlip {
-  from { opacity: 0; transform: rotateY(180deg); }
-  to { opacity: 1; transform: rotateY(0deg); }
-}
-
-@keyframes emojiBounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
-}
-
-@keyframes rocketLaunch {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  25% { transform: translateY(-5px) rotate(1deg); }
-  50% { transform: translateY(-10px) rotate(-1deg); }
-  75% { transform: translateY(-5px) rotate(0.5deg); }
-}
-
-@keyframes fadeInOut {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-</style>
 
 ---
 
