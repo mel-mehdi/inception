@@ -189,9 +189,7 @@ WP_ADMIN_PASSWORD=admin_password
 - Username: `ftp_user`
 - Password: `ftppassword123`
 
-## 🔧 Project Commands
-
-```bash
+🔧 Project Commands
 # Build all services
 make build
 
