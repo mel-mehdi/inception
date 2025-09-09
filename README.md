@@ -75,16 +75,8 @@ div[style*="typing"] {
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Troubleshooting](#troubleshooting)
-
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Services](#services)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
+- [Docker Concepts](#docker-concepts)
+- [Project Guide](#project-guide)
 
 ## 🏗️ Overview
 
@@ -138,8 +130,6 @@ graph TD
 }
 </style>
 
-  </details>
-</div>
   </details>
 </div>
 
@@ -234,8 +224,8 @@ graph TD
   }
   
   @keyframes countUp {
-    from { content: "0"; }
-    to { content: "1"; }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
   </style>
 </div>
@@ -374,29 +364,6 @@ graph TD
 
   </details>
 </div>
-
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd inc
-   ```
-
-2. **Set up environment variables**:
-   ```bash
-   # The .env file is already configured in srcs/.env
-   # Modify passwords and settings as needed
-   ```
-
-3. **Create data directories**:
-   ```bash
-   # This is done automatically by the Makefile
-   make
-   ```
-
-4. **Build and start services**:
-   ```bash
-   make
-   ```
 
 ## 🚀 Usage
 
@@ -955,15 +922,13 @@ flowchart TD
   to { opacity: 1; }
 }
 
-@keyframes numberCount {
-  0% { content: "0"; }
-  25% { content: "25"; }
-  50% { content: "50"; }
-  75% { content: "75"; }
-  100% { content: "100"; }
-}
-
-@keyframes progressFill {
+  @keyframes numberCount {
+    0% { opacity: 0.3; }
+    25% { opacity: 0.5; }
+    50% { opacity: 0.7; }
+    75% { opacity: 0.9; }
+    100% { opacity: 1; }
+  }@keyframes progressFill {
   0% { width: 0%; }
   25% { width: 25%; }
   50% { width: 50%; }
