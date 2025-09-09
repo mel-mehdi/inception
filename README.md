@@ -351,3 +351,378 @@ This project demonstrates:
 ---
 
 **Note**: This is an educational project for learning Docker and infrastructure management. For production use, additional security measures and monitoring should be implemented.
+
+# 🐳 الفرق بين Container و Image
+
+## المقارنة الأساسية
+
+### Docker Image (الصورة)
+📦 **الصورة = القالب الثابت**
+
+**خصائص الصورة:**
+- 🔒 للقراءة فقط
+- 💾 مخزنة على القرص
+- 🏗️ أساس بناء الحاويات
+- 🌐 قابلة للمشاركة
+
+### Docker Container (الحاوية)
+🏃 **الحاوية = التطبيق يعمل فعلياً**
+
+**خصائص الحاوية:**
+- 🔄 قيد التشغيل
+- 💭 تستهلك ذاكرة
+- ✏️ قابلة للتعديل
+- ⏰ لها دورة حياة
+
+## 🍳 تشبيه كتاب الطبخ
+
+| كتاب الطبخ (Docker Image) | ➡️ | الطبق المطبوخ (Docker Container) |
+|---------------------------|-----|----------------------------------|
+| 📖 وصفات مكتوبة          |     | 🔥 نتيجة تطبيق الوصفة          |
+| 🔒 لا تتغير              |     | 🍴 قابل للاستهلاك              |
+| 📤 يمكن مشاركتها         |     | 🔄 يمكن تكراره                 |
+
+## ⚙️ من الصورة إلى الحاوية
+
+1. 📦 **لديك صورة** - قالب ثابت جاهز للاستخدام
+   ```
+   nginx:latest
+   ```
+
+2. 🔨 **تشغل أمر** - تحول الصورة إلى حاوية
+   ```bash
+   docker run nginx
+   ```
+
+3. ✨ **حاوية تعمل** - التطبيق أصبح نشطاً
+   - 🌐 موقع ويب يعمل
+
+## 🔢 صورة واحدة ← عدة حاويات
+
+**صورة واحدة:** nginx:latest
+
+**تتحول إلى عدة حاويات:**
+- 🌐 حاوية 1: موقع شركة
+- 🛒 حاوية 2: متجر إلكتروني
+- 📱 حاوية 3: تطبيق API
+
+**✨ المعنى:** من صورة واحدة يمكن إنشاء حاويات متعددة تعمل بشكل منفصل!
+
+## 🔍 الفروق الرئيسية
+
+### Docker Image
+- 🔒 ثابتة وغير قابلة للتغيير
+- 💾 مخزنة على القرص الصلب
+- 📋 تحتوي على التعليمات فقط
+- ⚡ لا تستهلك معالج أو ذاكرة
+- 🏗️ أساس لإنشاء الحاويات
+
+### Docker Container
+- 🔄 نشطة ومتغيرة
+- 💭 تستخدم الذاكرة والمعالج
+- 🎯 التطبيق يعمل فعلياً
+- ⏰ لها دورة حياة (بداية ونهاية)
+- ✏️ يمكن التفاعل معها وتعديلها
+
+## 💡 مثال عملي: تطبيق ويب
+
+**الصورة:**
+- 🐧 Ubuntu Linux
+- 🔧 Node.js
+- 📁 كود التطبيق
+- 🔌 المكتبات
+- حجم: 200MB على القرص
+
+**الحاوية:**
+- 🔄 التطبيق يعمل
+- 🌐 Port: 3000
+- 💭 يستخدم 50MB ذاكرة
+- 🔧 يمكن التحكم به
+- الحالة: 🟢 نشط
+
+## 💻 أوامر عملية
+
+### التعامل مع الصور
+```bash
+# سحب صورة
+docker pull nginx
+
+# عرض الصور
+docker images
+
+# بناء صورة
+docker build -t myapp .
+```
+
+### التعامل مع الحاويات
+```bash
+# تشغيل حاوية
+docker run -d nginx
+
+# عرض الحاويات النشطة
+docker ps
+
+# إيقاف حاوية
+docker stop container_id
+```
+
+## 🎉 اتذكر
+- 📦 **الصورة** = الخطة أو القالب
+- 🏃 **الحاوية** = التطبيق يعمل من الخطة
+- 💡 صورة واحدة ← عدة حاويات
+
+# 🐳 شرح Docker بالصور والمخططات
+
+## 🔄 مقارنة الطريقة التقليدية مع Docker
+
+### ❌ الطريقة التقليدية
+**المشاكل:**
+- استهلاك عالي للذاكرة
+- بطء في الإقلاع
+- تعقيد في الإدارة
+
+```
+Hardware
+├── نظام التشغيل المضيف
+├── Virtual Machine 1
+│   ├── Guest OS 1
+│   └── التطبيق 1
+```
+
+### ✅ طريقة Docker
+**المميزات:**
+- استهلاك أقل للموارد
+- إقلاع سريع
+- إدارة مبسطة
+
+```
+Hardware
+├── نظام التشغيل المضيف
+├── Docker Engine
+├── Container 1
+│   └── التطبيق 1
+```
+
+## 🏗️ معمارية Docker
+
+### Virtual Machines
+```
+Hypervisor
+├── Guest OS ── App A
+└── Guest OS ── App B
+Host Operating System
+Infrastructure
+```
+
+### Docker Containers
+```
+Container A
+Container B
+Docker Engine
+Host Operating System
+Infrastructure
+```
+
+## ⚙️ سير عمل Docker
+
+1. 📝 **كتابة Dockerfile** - تعريف بيئة التطبيق والاعتمادات
+2. 🏗️ **بناء الصورة** - `docker build -t myapp .`
+3. 🚀 **تشغيل الحاوية** - `docker run myapp`
+4. ☁️ **النشر** - رفع للسحابة أو خوادم أخرى
+
+## 🎯 المفاهيم الأساسية المصورة
+
+### 📦 Docker Image (الصورة)
+قالب للقراءة فقط يحتوي على كل ما يحتاجه التطبيق:
+- نظام التشغيل الأساسي
+- المكتبات والتبعيات
+- كود التطبيق
+- إعدادات البيئة
+
+### 🏃 Docker Container (الحاوية)
+نسخة تشغيل حية من الصورة:
+- 🔄 التطبيق يعمل هنا
+- 📁 نظام ملفات معزول
+- 🌐 شبكة معزولة
+
+## 🚀 الفوائد الرئيسية
+
+- 🎯 **قابلية النقل** - يعمل في أي مكان بنفس الطريقة
+- ⚡ **السرعة** - إقلاع سريع وأداء عالي
+- 🛡️ **العزل** - كل تطبيق في بيئة منفصلة
+- 💰 **توفير الموارد** - استهلاك أقل للذاكرة والمعالج
+
+## 📊 مقارنة سريعة: Containers vs Virtual Machines
+
+| المعيار | Docker Containers | Virtual Machines |
+|---------|-------------------|------------------|
+| وقت الإقلاع | ثوانٍ | دقائق |
+| استهلاك الذاكرة | منخفض (MBs) | عالي (GBs) |
+| نظام التشغيل | مشارك | منفصل لكل VM |
+| الأمان | عزل على مستوى العملية | عزل كامل |
+
+## 💻 الأوامر الأساسية
+
+```bash
+# تشغيل حاوية جديدة
+docker run -d --name myapp nginx
+
+# عرض الحاويات النشطة
+docker ps
+
+# بناء صورة من Dockerfile
+docker build -t myimage:latest .
+
+# إيقاف حاوية
+docker stop myapp
+
+# حذف حاوية
+docker rm myapp
+
+# عرض الصور المحلية
+docker images
+
+# سحب صورة من Docker Hub
+docker pull ubuntu:20.04
+```
+
+## 🔄 دورة حياة Docker
+
+📝 **Dockerfile** → 📦 **Docker Image** → 🏃 **Container**
+
+## 🌟 حالات الاستخدام الشائعة
+
+- 🔧 **تطوير التطبيقات** - بيئة موحدة لجميع المطورين
+- ☁️ **النشر السحابي** - نشر سهل وسريع للتطبيقات
+- 🧪 **الاختبار** - اختبار في بيئات مختلفة بسهولة
+- ⚖️ **التوسع** - زيادة عدد الحاويات حسب الطلب
+
+## 💡 مثال عملي: تشغيل موقع ويب
+
+📁 مجلد المشروع → 🔨 **بناء الصورة** → ▶️ **تشغيل الموقع**
+
+```bash
+# إنشاء Dockerfile
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/
+
+# بناء الصورة
+docker build -t my-website .
+
+# تشغيل الموقع
+docker run -p 8080:80 my-website
+```
+
+## 🎉 الخلاصة
+Docker يجعل تطوير ونشر التطبيقات أسهل وأسرع وأكثر موثوقية!
+
+# 🏗️ Inception Project Architecture Guide
+
+## 📐 Project Architecture Overview
+
+### Services
+
+#### 🌐 NGINX
+- **Port:** 443 (HTTPS only)
+- SSL/TLS Certificate
+- Reverse Proxy
+- Static Files
+
+#### 📝 WordPress + PHP-FPM
+- **Port:** 9000 (internal)
+- CMS System
+- PHP Processing
+- User Interface
+
+#### 🗄️ MariaDB
+- **Port:** 3306 (internal)
+- Database Server
+- Data Persistence
+- WordPress Backend
+
+## 🔗 Network Flow
+
+👤 **User** → 🌐 **NGINX** (Port 443) → 📝 **WordPress** (PHP Processing) → 🗄️ **MariaDB** (Database Query)
+
+## 📋 Key Requirements
+
+### 🐳 Docker Requirements
+- Custom Dockerfiles (no pre-built images)
+- Alpine or Debian base images
+- No ready-made containers from DockerHub
+- Each service in separate container
+
+### 🔐 Security Requirements
+- HTTPS only (port 443)
+- SSL/TLS certificate
+- Environment variables in .env
+- No credentials in repository
+
+### 🗂️ Structure Requirements
+- srcs/ folder at repository root
+- Makefile at repository root
+- docker-compose.yml in srcs/
+- Dockerfiles in respective directories
+
+### 💾 Persistence Requirements
+- Docker volumes for data
+- WordPress files volume
+- Database data volume
+- Data survives container restart
+
+## 📁 Required Directory Structure
+
+```
+inception/
+├── Makefile
+└── srcs/
+    ├── docker-compose.yml
+    ├── .env
+    └── requirements/
+        ├── nginx/
+        │   ├── Dockerfile
+        │   ├── conf/
+        │   └── tools/
+        ├── wordpress/
+        │   ├── Dockerfile
+        │   ├── conf/
+        │   └── tools/
+        └── mariadb/
+            ├── Dockerfile
+            ├── conf/
+            └── tools/
+```
+
+## 💾 Volume Configuration
+
+### 📁 WordPress Volume
+`/home/[login]/data/wordpress` → `/var/www/html`
+
+### 🗄️ MariaDB Volume
+`/home/[login]/data/mariadb` → `/var/lib/mysql`
+
+## ✅ Evaluation Checklist
+
+- 🔍 Custom Dockerfiles for each service (no DockerHub images)
+- 🔒 NGINX accessible only via HTTPS (port 443)
+- 🌐 Website accessible at https://[login].42.fr
+- 📝 WordPress properly configured (no installation page)
+- 🗄️ MariaDB database populated and accessible
+- 💾 Data persists after system reboot
+- 🔗 Docker network configured (no host network or links)
+- 🚫 No infinite loops or background processes in Dockerfiles
+
+## 🎯 Learning Objectives
+
+- Understand Docker containerization concepts
+- Learn docker-compose for multi-service applications
+- Implement secure web server configuration
+- Practice infrastructure as code principles
+
+## 💡 Study Resources
+
+- 📚 Docker Documentation: Official Docker docs
+- 🔧 Docker Compose Guide: Multi-container applications
+- 🌐 NGINX Configuration: SSL/TLS setup
+- 📝 WordPress with Docker: PHP-FPM configuration
+- 🗄️ MariaDB Setup: Database initialization
